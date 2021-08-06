@@ -73,5 +73,9 @@
     </navigator>
   </view>
 
+  <view class="uploader">
+    <button bindtap="openDoor">开门</button>
+  </view>
+
 
 </view>
