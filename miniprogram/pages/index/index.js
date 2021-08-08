@@ -56,7 +56,9 @@ Page({
     // 调用云函数
     wx.cloud.callFunction({
       name: "login",
-      data: {},
+      data: {
+        name: "huangbin",
+      },
       success: (res) => {
         console.log("[云函数] [login] user openid: ", res.result.openid);
         app.globalData.openid = res.result.openid;
@@ -132,6 +134,27 @@ Page({
       },
       success(res) {
         console.log(res.data);
+      },
+    });
+  },
+
+  getPhone(e) {
+    wx.showToast({
+      title: "成功",
+      icon: "success",
+      duration: 2000,
+    });
+
+    wx.showModal({
+      title: "提示",
+      content: "这是一个模态弹窗",
+      success(res) {
+        if (res.confirm) {
+          console.log("用户点击确定");
+          console.log(e);
+        } else if (res.cancel) {
+          console.log("用户点击取消");
+        }
       },
     });
   },
