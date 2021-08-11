@@ -1,0 +1,24 @@
+// 所有动态
+@all-dynamic: ~"all-dynamic";
+// TabPane
+@at-tabs-pane: ~'at-tabs-pane';
+
+// === params ===
+.at-tabs-pane {
+  padding-top: 0.75rem;
+}
+
+// === components ===
+.dashboard {
+  height: 100%;
+
+  .@{at-tabs-pane} {
+    .at-tabs-pane()
+  }
+
+  .at-fab__icon {
+    position: fixed;
+    top: 80%;
+    right: 10%;
+  }
+}
