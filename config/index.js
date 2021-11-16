@@ -1,3 +1,5 @@
+import { resolve } from 'path';
+
 const config = {
   projectName: 'XiangDa',
   date: '2021-8-8',
@@ -11,6 +13,12 @@ const config = {
   outputRoot: 'dist',
   plugins: [],
   defineConstants: {
+  },
+  alias: {
+    '@/components': resolve(__dirname, '..', 'src/components'),
+    '@/utils': resolve(__dirname, '..', 'src/utils'),
+    '@/package': resolve(__dirname, '..', 'package.json'),
+    '@/assets': resolve(__dirname, '..', 'src/assets'),
   },
   copy: {
     patterns: [
@@ -62,7 +70,7 @@ const config = {
   }
 }
 
-module.exports = function (merge) {
+export default function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
