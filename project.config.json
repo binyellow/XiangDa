@@ -4,7 +4,7 @@
   "description": "xiang da mini program",
   "appid": "wx2d85a631bd35f8d1",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": false,
     "enhance": true,
     "postcss": false,

@@ -12,12 +12,15 @@ const UserInfo = () => {
           console.log(res);
           //发起网络请求
           Taro.request({
-            url: 'https://binyellow.top:9090/user/login',
+            url: 'http://localhost:9090/user/login',
             data: {
               username: 'admin',
               password: 123456,
             },
-            method: 'POST'
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+            }, 
           })
         } else {
           console.log('登录失败！' + res.errMsg)

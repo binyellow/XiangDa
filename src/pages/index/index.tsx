@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { View, Button } from "@tarojs/components";
 import { AtCard, AtFab, AtTabs, AtTabsPane, AtIcon } from "taro-ui";
 import Taro from "@tarojs/taro";
@@ -10,105 +10,87 @@ import "taro-ui/dist/style/components/fab.scss";
 import "taro-ui/dist/style/components/icon.scss";
 import "./index.less";
 
-// #01a8ec
-export default class Index extends Component {
-  state = {
-    current: 0
-  };
+const Index = () => {
+  const [current, setCurrent] = useState(0);
 
-  componentWillMount() {}
-
-  componentDidMount() {
+  useEffect(() => {
     Taro.setTabBarBadge({
       index: 0,
       text: "5"
     });
-  }
+  }, []);
 
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
-
-  handleClick(value) {
-    this.setState({
-      current: value
-    });
-  }
-
-  handleAdd() {
+  const handleAdd = () => {
     Taro.login().then(console.log);
     Taro.getUserInfo().then(console.log);
-  }
+  };
+  return (
+    <View className='dashboard'>
+      <AtTabs
+        current={current}
+        scroll
+        tabList={[
+          { title: "标签页1" },
+          { title: "标签页2" },
+          { title: "标签页3" },
+          { title: "标签页4" },
+          { title: "标签页5" },
+          { title: "标签页6" }
+        ]}
+        onClick={setCurrent}
+      >
+        <AtTabsPane current={current} index={0}>
+          <View style='font-size:18px;text-align:center;height:100px;'>
+            <AtCard
+              note='小Tips'
+              extra='额外信息'
+              title='这是个标题'
+              thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
+            >
+              这也是内容区 可以随意定义功能
+            </AtCard>
+          </View>
+          {/* <Button onClick={this.handleEvent.bind(this)}>试试</Button> */}
+        </AtTabsPane>
+        <AtTabsPane current={current} index={1}>
+          <View style='font-size:18px;text-align:center;height:100px;'>
+            标签页二的内容
+          </View>
+        </AtTabsPane>
+        <AtTabsPane current={current} index={2}>
+          <View style='font-size:18px;text-align:center;height:100px;'>
+            标签页三的内容
+          </View>
+        </AtTabsPane>
+        <AtTabsPane current={current} index={3}>
+          <View style='font-size:18px;text-align:center;height:100px;'>
+            标签页四的内容
+          </View>
+        </AtTabsPane>
+        <AtTabsPane current={current} index={4}>
+          <View style='font-size:18px;text-align:center;height:100px;'>
+            标签页五的内容
+          </View>
+        </AtTabsPane>
+        <AtTabsPane current={current} index={5}>
+          <View style='font-size:18px;text-align:center;height:100px;'>
+            标签页六的内容
+          </View>
+        </AtTabsPane>
+      </AtTabs>
 
-  render() {
-    return (
-      <View className='dashboard'>
-        <AtTabs
-          current={this.state.current}
-          scroll
-          tabList={[
-            { title: "标签页1" },
-            { title: "标签页2" },
-            { title: "标签页3" },
-            { title: "标签页4" },
-            { title: "标签页5" },
-            { title: "标签页6" }
-          ]}
-          onClick={this.handleClick.bind(this)}
-        >
-          <AtTabsPane current={this.state.current} index={0}>
-            <View style='font-size:18px;text-align:center;height:100px;'>
-              <AtCard
-                note='小Tips'
-                extra='额外信息'
-                title='这是个标题'
-                thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
-              >
-                这也是内容区 可以随意定义功能
-              </AtCard>
-            </View>
-            {/* <Button onClick={this.handleEvent.bind(this)}>试试</Button> */}
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={1}>
-            <View style='font-size:18px;text-align:center;height:100px;'>
-              标签页二的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={2}>
-            <View style='font-size:18px;text-align:center;height:100px;'>
-              标签页三的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={3}>
-            <View style='font-size:18px;text-align:center;height:100px;'>
-              标签页四的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={4}>
-            <View style='font-size:18px;text-align:center;height:100px;'>
-              标签页五的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={5}>
-            <View style='font-size:18px;text-align:center;height:100px;'>
-              标签页六的内容
-            </View>
-          </AtTabsPane>
-        </AtTabs>
-
-        <View className='fab'>
-          <AtFab size='small'>
-            <AtIcon
-              className='at-fab__icon'
-              onClick={this.handleAdd.bind(this)}
-              value='add'
-              color='#ccc'
-            />
-          </AtFab>
-        </View>
+      <View className='fab'>
+        <AtFab size='small'>
+          <AtIcon
+            className='at-fab__icon'
+            onClick={handleAdd}
+            value='add'
+            color='#ccc'
+          />
+        </AtFab>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
+
+export default Index;
