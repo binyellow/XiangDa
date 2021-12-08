@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
-import { View, Button } from "@tarojs/components";
+import { useEffect, useState } from "react";
+import { View } from "@tarojs/components";
 import { AtCard, AtFab, AtTabs, AtTabsPane, AtIcon } from "taro-ui";
 import Taro from "@tarojs/taro";
 
@@ -34,8 +34,6 @@ const Index = () => {
           { title: "标签页2" },
           { title: "标签页3" },
           { title: "标签页4" },
-          { title: "标签页5" },
-          { title: "标签页6" }
         ]}
         onClick={setCurrent}
       >
