@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { View } from "@tarojs/components";
+import { CoverImage, View } from "@tarojs/components";
 import { AtCard, AtFab, AtTabs, AtTabsPane, AtIcon } from "taro-ui";
 import Taro from "@tarojs/taro";
+import titleBg from '@/assets/logo/titleBg.png';
 
 import "taro-ui/dist/style/components/button.scss"; // 按需引入
 import "taro-ui/dist/style/components/tabs.scss";
@@ -26,6 +27,7 @@ const Index = () => {
   };
   return (
     <View className='dashboard'>
+      <CoverImage src={titleBg} className='title-bg' />
       <AtTabs
         current={current}
         scroll
