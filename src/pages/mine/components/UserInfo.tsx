@@ -30,7 +30,13 @@ const UserInfo = () => {
   };
   return (
     <View>
-      1<Image src={logo}></Image>
+      <View>有建议和想法可以联系</View>
+      <View>github：https://github.com/binyellow</View>
+      <View>QQ：571704908</View>
+      <View>WeChat：ayellowbin</View>
+      <View>请注明：小程序</View>
+      <View>工作繁忙，努力迭代中</View>
+      {/* <Image src={logo}></Image> */}
       <Button openType='getPhoneNumber' onGetPhoneNumber={handleClick}>点击登录</Button>
     </View>
   );

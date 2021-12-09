@@ -30,10 +30,10 @@ const Index = () => {
         current={current}
         scroll
         tabList={[
-          { title: "标签页1" },
-          { title: "标签页2" },
-          { title: "标签页3" },
-          { title: "标签页4" },
+          { title: "学习打卡" },
+          { title: "开黑" },
+          { title: "交友表白" },
+          { title: "Xiang分享" },
         ]}
         onClick={setCurrent}
       >
@@ -77,7 +77,7 @@ const Index = () => {
         </AtTabsPane>
       </AtTabs>
 
-      <View className='fab'>
+      {/* <View className='fab'>
         <AtFab size='small'>
           <AtIcon
             className='at-fab__icon'
@@ -86,7 +86,7 @@ const Index = () => {
             color='#ccc'
           />
         </AtFab>
-      </View>
+      </View> */}
     </View>
   );
 };
