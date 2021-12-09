@@ -52,27 +52,17 @@ const Index = () => {
         </AtTabsPane>
         <AtTabsPane current={current} index={1}>
           <View style='font-size:18px;text-align:center;height:100px;'>
-            标签页二的内容
+            一起来开黑
           </View>
         </AtTabsPane>
         <AtTabsPane current={current} index={2}>
           <View style='font-size:18px;text-align:center;height:100px;'>
-            标签页三的内容
+            大胆表达自己把
           </View>
         </AtTabsPane>
         <AtTabsPane current={current} index={3}>
           <View style='font-size:18px;text-align:center;height:100px;'>
-            标签页四的内容
-          </View>
-        </AtTabsPane>
-        <AtTabsPane current={current} index={4}>
-          <View style='font-size:18px;text-align:center;height:100px;'>
-            标签页五的内容
-          </View>
-        </AtTabsPane>
-        <AtTabsPane current={current} index={5}>
-          <View style='font-size:18px;text-align:center;height:100px;'>
-            标签页六的内容
+            Xiang要分享点啥
           </View>
         </AtTabsPane>
       </AtTabs>
