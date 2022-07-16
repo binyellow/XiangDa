@@ -1,0 +1,28 @@
+.card {
+  .at-card {
+    text-align: left;
+    &:not(:first-of-type) {
+      margin-top: 28px;
+    }
+
+    &__header-title {
+      font-weight: bold;
+    }
+
+    &__content {
+      max-height: 300px;
+      overflow: auto;
+
+      .news-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 8px;
+
+        .extra {
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { CoverImage, View } from "@tarojs/components";
-import { AtCard, AtTabs, AtTabsPane } from "taro-ui";
 import Taro from "@tarojs/taro";
 import titleBg from "@/assets/logo/titleBg.png";
 
@@ -10,21 +9,29 @@ import "taro-ui/dist/style/components/card.scss";
 import "taro-ui/dist/style/components/fab.scss";
 import "taro-ui/dist/style/components/icon.scss";
 import "./index.less";
+import Card from "./components/Card";
+import { NewsRes } from "./type";
 
 const Index = () => {
-  const [current, setCurrent] = useState(0);
+  const [dataSource, setDataSource] = useState<NewsRes["data"]>([]);
 
   useEffect(() => {
     Taro.setTabBarBadge({
       index: 0,
-      text: "5"
+      text: "6"
     });
+    queryList();
   }, []);
 
-  const handleAdd = () => {
-    Taro.login().then(console.log);
-    Taro.getUserInfo().then(console.log);
+  const queryList = () => {
+    Taro.request({
+      method: "GET",
+      url: "https://momoyu.cc/api/hot/list?type=0"
+    }).then(res => {
+      setDataSource(res?.data?.data);
+    });
   };
+
   return (
     <View className='dashboard'>
       <CoverImage
@@ -33,14 +40,7 @@ const Index = () => {
         style='margin-bottom: 12px'
       />
       <View style='font-size:18px;text-align:center;height:100px;'>
-        <AtCard
-          // note='小Tips'
-          title='这里是树洞'
-          // thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
-        >
-          <view>说你Xiang说</view>
-          <view>做你Xiang做</view>
-        </AtCard>
+        <Card dataSource={dataSource} />
       </View>
     </View>
   );
