@@ -37,7 +37,7 @@ const Index = () => {
       <CoverImage
         src={titleBg}
         className='title-bg'
-        style='margin-bottom: 12px'
+        style='margin-bottom: 30rpx'
       />
       <View style='font-size:18px;text-align:center;height:100px;'>
         <Card dataSource={dataSource} />

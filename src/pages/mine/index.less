@@ -1,0 +1,47 @@
+.mine {
+  padding: 48rpx;
+
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      font-size: 28rpx;
+      align-items: center;
+
+      .user-image {
+        width: 130rpx;
+        transform: scale(1.5);
+      }
+
+      .login {
+        margin-left: 24rpx;
+        max-width: 300rpx;
+
+        &-btn {
+          font-size: 30rpx;
+          margin-bottom: 12rpx;
+          font-weight: 400;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        &-fans {
+          font-weight: 300;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: flex-start;
+      margin-top: -4rpx;
+
+      .mail {
+        width: 45rpx;
+        height: 45rpx;
+      }
+    }
+  }
+}

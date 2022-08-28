@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { View } from "@tarojs/components";
-import { AtCard, AtFab, AtTabs, AtTabsPane, AtIcon } from "taro-ui";
+import { AtCard, AtTabs, AtTabsPane } from "taro-ui";
 import Taro from "@tarojs/taro";
 
 import "taro-ui/dist/style/components/button.scss"; // 按需引入
@@ -8,6 +8,7 @@ import "taro-ui/dist/style/components/tabs.scss";
 import "taro-ui/dist/style/components/card.scss";
 import "taro-ui/dist/style/components/fab.scss";
 import "taro-ui/dist/style/components/icon.scss";
+import "taro-ui/dist/style/components/modal.scss";
 import "./index.less";
 
 const Index = () => {
@@ -40,12 +41,12 @@ const Index = () => {
         <AtTabsPane current={current} index={0}>
           <View style='font-size:18px;text-align:center;height:100px;'>
             <AtCard
-              note='小Tips'
-              extra='额外信息'
-              title='这是个标题'
-              thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
+              // note='小Tips'
+              // extra='额外信息'
+              title='计算机'
+              // thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
             >
-              这也是内容区 可以随意定义功能
+              小程序原生
             </AtCard>
           </View>
           {/* <Button onClick={this.handleEvent.bind(this)}>试试</Button> */}
@@ -57,7 +58,7 @@ const Index = () => {
         </AtTabsPane>
         <AtTabsPane current={current} index={2}>
           <View style='font-size:18px;text-align:center;height:100px;'>
-            大胆表达自己把
+            大胆表达自己吧
           </View>
         </AtTabsPane>
         <AtTabsPane current={current} index={3}>

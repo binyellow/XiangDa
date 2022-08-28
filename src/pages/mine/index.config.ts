@@ -1,3 +1,5 @@
 export default {
-  navigationBarTitleText: '我'
+  navigationBarTitleText: '',
+  enableShareAppMessage: true,
+  enableShareTimeline: true,
 }
