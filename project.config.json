@@ -1,59 +1,34 @@
 {
   "miniprogramRoot": "dist/",
   "projectname": "XiangDa",
-  "description": "xiang da mini program",
+  "description": "xiangda",
   "appid": "wx2d85a631bd35f8d1",
   "setting": {
-    "urlCheck": false,
-    "es6": false,
+    "urlCheck": true,
+    "es6": true,
     "enhance": true,
-    "postcss": false,
+    "compileHotReLoad": false,
+    "postcss": true,
     "preloadBackgroundData": false,
     "minified": false,
     "newFeature": true,
-    "coverView": true,
-    "nodeModules": true,
     "autoAudits": false,
+    "coverView": true,
     "showShadowRootInWxmlPanel": false,
     "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": true,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
+    "useCompilerModule": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
-    "useIsolateContext": true,
-    "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "disableUseStrict": false,
-    "showES6CompileOption": false,
-    "useCompilerPlugins": false
+    "condition": false
   },
   "compileType": "miniprogram",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
-        }
-      ]
-    }
-  },
-  "libVersion": "2.14.1",
+  "condition": {},
+  "libVersion": "3.1.4",
   "srcMiniprogramRoot": "dist/",
   "packOptions": {
     "ignore": [],
