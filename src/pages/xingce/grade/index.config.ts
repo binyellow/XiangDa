@@ -1,6 +1,5 @@
 export default {
-  navigationBarTitleText: '上岸',
-  navigationStyle: 'custom',
+  navigationBarTitleText: '分数计算',
   enableShareAppMessage: true,
   enableShareTimeline: true,
 }

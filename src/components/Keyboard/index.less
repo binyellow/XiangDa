@@ -1,0 +1,17 @@
+.at-row.at-row--wrap {
+  gap: 6rpx;
+  & > view {
+    height: 120rpx;
+
+    &.at-col-4 {
+      -ms-flex: 0 0 calc(33.3333333333% - 6px);
+      flex: 0 0 calc(33.3333333333% - 6px);
+      -webkit-box-flex: 0;
+      max-width: calc(33.3333333333% - 6px);
+      background-color: #ceeccf;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

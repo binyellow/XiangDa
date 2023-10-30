@@ -23,6 +23,7 @@ const config = {
     '@/utils': resolve(__dirname, '..', 'src/utils'),
     '@/package': resolve(__dirname, '..', 'package.json'),
     '@/assets': resolve(__dirname, '..', 'src/assets'),
+    '@/hooks': resolve(__dirname, '..', 'src/hooks'),
   },
   compiler: {
     type: "webpack5",

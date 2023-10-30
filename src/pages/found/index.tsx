@@ -1,84 +1,93 @@
-import { useEffect, useState } from "react";
-import { View } from "@tarojs/components";
-import { AtCard, AtTabs, AtTabsPane } from "taro-ui";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { Picker, View } from "@tarojs/components";
+import { AtAccordion, AtIcon, AtList, AtListItem } from "taro-ui";
 import Taro from "@tarojs/taro";
-
-import "taro-ui/dist/style/components/button.scss"; // 按需引入
-import "taro-ui/dist/style/components/tabs.scss";
-import "taro-ui/dist/style/components/card.scss";
-import "taro-ui/dist/style/components/fab.scss";
-import "taro-ui/dist/style/components/icon.scss";
-import "taro-ui/dist/style/components/modal.scss";
 import "./index.less";
+import { defaultOpenMap, xingCeTypeEnum } from "./constants";
+import { FoundContext } from "./Context";
 
+const range = ["10", "5", "15", "20"];
 const Index = () => {
-  const [current, setCurrent] = useState(0);
+  const [open, setOpen] = useState(defaultOpenMap);
+  const foundContext = useContext(FoundContext);
+  const [questionNum, setQuestionNum] = useState(10);
+  const memoFoundContext = useMemo(() => {
+    return {
+      ...foundContext,
+    };
+  }, [foundContext]);
+  const [menuInfo, setMenuInfo] = useState<
+    undefined | { height: number; top: number }
+  >();
 
   useEffect(() => {
-    Taro.setTabBarBadge({
-      index: 0,
-      text: "5"
-    });
+    setBadge();
+    getSystemInfoSync();
   }, []);
 
-  const handleAdd = () => {
-    Taro.login().then(console.log);
-    Taro.getUserInfo().then(console.log);
+  // 设置首页的徽标数
+  const setBadge = () => {
+    Taro.setTabBarBadge({
+      index: 0,
+      text: "5",
+    });
   };
-  return (
-    <View className='dashboard'>
-      <AtTabs
-        current={current}
-        scroll
-        tabList={[
-          { title: "学习打卡" },
-          { title: "开黑" },
-          { title: "交友表白" },
-          { title: "Xiang分享" },
-        ]}
-        onClick={setCurrent}
-      >
-        <AtTabsPane current={current} index={0}>
-          <View style='font-size:18px;text-align:center;height:100px;'>
-            <AtCard
-              // note='小Tips'
-              // extra='额外信息'
-              title='计算机'
-              // thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
-            >
-              小程序原生
-            </AtCard>
-          </View>
-          {/* <Button onClick={this.handleEvent.bind(this)}>试试</Button> */}
-        </AtTabsPane>
-        <AtTabsPane current={current} index={1}>
-          <View style='font-size:18px;text-align:center;height:100px;'>
-            一起来开黑
-          </View>
-        </AtTabsPane>
-        <AtTabsPane current={current} index={2}>
-          <View style='font-size:18px;text-align:center;height:100px;'>
-            大胆表达自己吧
-          </View>
-        </AtTabsPane>
-        <AtTabsPane current={current} index={3}>
-          <View style='font-size:18px;text-align:center;height:100px;'>
-            Xiang要分享点啥
-          </View>
-        </AtTabsPane>
-      </AtTabs>
 
-      {/* <View className='fab'>
-        <AtFab size='small'>
-          <AtIcon
-            className='at-fab__icon'
-            onClick={handleAdd}
-            value='add'
-            color='#ccc'
-          />
-        </AtFab>
-      </View> */}
-    </View>
+  // 获取操作按钮的属性
+  const getSystemInfoSync = () => {
+    const info = Taro.getMenuButtonBoundingClientRect();
+    setMenuInfo(info);
+    console.log(info);
+  };
+
+  const handleClick = (open, type) => {
+    setOpen({
+      ...open,
+      [type]: open,
+    });
+  };
+
+  return (
+    <FoundContext.Provider value={memoFoundContext}>
+      <View className="dashboard">
+        <View
+          style={{
+            marginTop: menuInfo?.top,
+            height: menuInfo?.height,
+          }}
+          className="menu-wrapper"
+        >
+          <Picker
+            mode="selector"
+            range={range}
+            value={questionNum}
+            onChange={(e) => setQuestionNum(+e?.detail?.value)}
+          >
+            <View className="at-icon at-icon-settings"></View>
+          </Picker>
+          <View>上岸</View>
+        </View>
+        <AtIcon value="setting" size="30" color="#F00"></AtIcon>
+        <AtAccordion
+          open={open[xingCeTypeEnum.ziliao]}
+          onClick={(open) => handleClick(open, xingCeTypeEnum.ziliao)}
+          title="资料分析"
+        >
+          <AtList hasBorder={false}>
+            <AtListItem
+              title="分数计算（分子<分母）"
+              arrow="right"
+              thumb="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
+              onClick={() => {
+                Taro.navigateTo({
+                  url: `/pages/xingce/grade/index?number=${range[questionNum]}`,
+                });
+              }}
+            />
+          </AtList>
+        </AtAccordion>
+      </View>
+    </FoundContext.Provider>
   );
 };
 

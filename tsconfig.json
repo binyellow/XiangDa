@@ -21,7 +21,12 @@
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "@/assets": ["src/assets"],
+      "@/utils": ["src/utils"],
+      "@/hooks": ["src/hooks"],
+    },
   },
   "include": ["./src", "./types"],
   "compileOnSave": false

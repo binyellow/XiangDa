@@ -12,13 +12,18 @@
 .dashboard {
   height: 100%;
 
-  .@{at-tabs-pane} {
-    .at-tabs-pane();
-  }
+  .menu-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .fab {
-    position: fixed;
-    top: 90%;
-    right: 10%;
+    view {
+      &:first-child {
+        position: absolute;
+        left: 24rpx;
+        font-size: 44rpx;
+      }
+    }
   }
 }

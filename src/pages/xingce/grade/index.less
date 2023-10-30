@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx;
+}
+
+.cal-content {
+  font-size: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20rpx;
+
+  &-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.at-curtain__container {
+  height: 100%;
+  width: 100%;
+
+  .at-curtain__body {
+    height: 100%;
+
+    & > view:first-child {
+      height: 100% !important;
+    }
+
+    .at-curtain__btn-close--bottom-right {
+      bottom: 60rpx;
+      right: 30rpx;
+    }
+  }
+}
