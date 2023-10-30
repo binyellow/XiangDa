@@ -59,8 +59,6 @@ const UserInfo = () => {
           Taro.request({
             url,
             data: {
-              appid: "wx2d85a631bd35f8d1",
-              secret: "ff5f95cdbbf20b8b63056b9c395c776c",
               js_code: res.code,
               grant_type: "authorization_code",
             },
