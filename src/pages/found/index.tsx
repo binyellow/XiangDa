@@ -10,7 +10,7 @@ const range = ["10", "5", "15", "20"];
 const Index = () => {
   const [open, setOpen] = useState(defaultOpenMap);
   const foundContext = useContext(FoundContext);
-  const [questionNum, setQuestionNum] = useState(10);
+  const [questionNum, setQuestionNum] = useState(0);
   const memoFoundContext = useMemo(() => {
     return {
       ...foundContext,
