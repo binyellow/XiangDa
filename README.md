@@ -1,7 +1,7 @@
 - [ ] 主包超过1.5M
 - [ ] 真机调试-白屏
 - [ ] useHistory
-- [ ] TS问题
+- [x] TS问题
 - [x] useHeader
 - [x] canvas还是导致下拉
   - pageconfig中设置禁止滚动 

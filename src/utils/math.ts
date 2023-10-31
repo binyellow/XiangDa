@@ -12,5 +12,5 @@ export function onPrecision(givenValue, inputValue, precision = 2) {
   const error = calculateError(givenValue, inputValue);
   const isErrorWithin2Percent = error <= precision;
 
-  return isErrorWithin2Percent;
+  return [isErrorWithin2Percent, error];
 }

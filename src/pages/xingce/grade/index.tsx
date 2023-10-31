@@ -1,3 +1,11 @@
+/*
+ * 3位数计算
+ * @author: branhuang <branhuang@tencent.com>
+ * @version: 0.0.1
+ * @date: 2023-10-30
+ * @copyright Copyright (c) 2020, Tencent
+ */
+
 import { Button, View } from "@tarojs/components";
 import { useEffect, useRef, useState } from "react";
 import { getRandomInt } from "@/utils/math";
@@ -14,6 +22,7 @@ import {
 import "./index.less";
 import Taro from "@tarojs/taro";
 import useHeader from "@/hooks/useHeader";
+import ErrorResult, { ErrorResultRefProps } from "./components/ErrorResult";
 
 const Grade = () => {
   const params = Taro.getCurrentInstance()?.router?.params;
@@ -21,6 +30,7 @@ const Grade = () => {
   const canvasRef = useRef<CanvasDrawingRef>(null);
   const [fenmu, setFenmu] = useState(getRandomInt(101, 1000));
   const [fenzi, setFenzi] = useState(getRandomInt(100, fenmu));
+  const errorResultRef = useRef<ErrorResultRefProps>(null);
 
   const [resultVisible, setResultVisible] = useState(false);
   const { header, onResetTime, right, onResetRight, onError, onRight, done } =
@@ -33,11 +43,12 @@ const Grade = () => {
   }, [done]);
 
   const onOk = () => {
-    const ok = onPrecision(fenzi / fenmu, +keyboardVal);
+    const [ok, precision] = onPrecision(fenzi / fenmu, +keyboardVal);
     if (ok) {
       onRight();
     } else {
       onError();
+      errorResultRef?.current?.show({ timu: fenzi / fenmu, answer: keyboardVal, precision })
     }
     onReset();
     onRestart();
@@ -99,6 +110,8 @@ const Grade = () => {
           </AtModalAction>
         </AtModal>
       )}
+
+      <ErrorResult ref={errorResultRef} />
     </View>
   );
 };
