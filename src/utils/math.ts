@@ -14,3 +14,8 @@ export function onPrecision(givenValue, inputValue, precision = 2): [boolean, nu
 
   return [isErrorWithin2Percent, error];
 }
+
+export function roundNumber(number, precision = 2) {
+  const factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
+}

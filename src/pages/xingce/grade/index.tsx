@@ -36,6 +36,7 @@ const Grade = () => {
     done,
     time,
     stopTime,
+    doTime,
   } = useHeader({ total });
 
   useEffect(() => {
@@ -80,6 +81,7 @@ const Grade = () => {
     onRestart();
     onResetRight();
     onResetHistory();
+    doTime();
   };
 
   return (

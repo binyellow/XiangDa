@@ -22,6 +22,7 @@ import {
 } from "taro-ui";
 import { Button, View } from "@tarojs/components";
 import "./ErrorResult.less";
+import { roundNumber } from "@/utils/math";
 
 export interface ErrorResultRefProps {
   show: (info: HistoryProps) => void;
@@ -57,9 +58,11 @@ const ErrorResult = forwardRef((props, ref: RefObject<ErrorResultRefProps>) => {
     <AtModal isOpened={visible}>
       <AtModalHeader>回答错误</AtModalHeader>
       <AtModalContent>
-        <Item label="正确值" value={errorInfo?.timu} />
-        <Item label="你的值" value={errorInfo?.answer} />
-        <Item label="误差率" value={`${errorInfo?.error} %`} />
+        <View className="content">
+          <Item label="正确值" value={roundNumber(errorInfo?.timu)} />
+          <Item label="你的值" value={roundNumber(errorInfo?.answer)} />
+          <Item label="误差率" value={`${roundNumber(errorInfo?.error)} %`} />
+        </View>
       </AtModalContent>
       <AtModalAction>
         <Button onClick={() => setVisible(false)}>确定</Button>

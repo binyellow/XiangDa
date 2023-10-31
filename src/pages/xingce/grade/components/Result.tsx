@@ -17,6 +17,7 @@ import React, {
 import { AtModal, AtModalAction, AtModalContent, AtModalHeader } from "taro-ui";
 import classnames from "classnames";
 import "./Result.less";
+import { roundNumber } from "@/utils/math";
 
 interface ResultProps {
   onSure: () => void;
@@ -48,26 +49,28 @@ const Result = forwardRef(
       <AtModal isOpened={visible}>
         <AtModalHeader>恭喜你做完了</AtModalHeader>
         <AtModalContent>
-          <View>耗时: {time}</View>
-          <View className="at-row at-row--wrap result">
-            <View className="at-col at-col-4">题目</View>
-            <View className="at-col at-col-4">答案</View>
-            <View className="at-col at-col-4">你的值</View>
-            {history?.map((entity) => {
-              const { timu, answer, ok, originTimu } = entity;
-              return [
-                <View className="at-col at-col-4">{originTimu}</View>,
-                <View className="at-col at-col-4">{timu}</View>,
-                <View
-                  className={classnames(
-                    "at-col at-col--4",
-                    `${ok ? "ok" : "error"}`
-                  )}
-                >
-                  {answer}
-                </View>,
-              ];
-            })}
+          <View className="content">
+            <View>耗时: {time}</View>
+            <View className="at-row at-row--wrap result">
+              <View className="at-col at-col-4">题目</View>
+              <View className="at-col at-col-4">答案</View>
+              <View className="at-col at-col-4">你的值</View>
+              {history?.map((entity) => {
+                const { timu, answer, ok, originTimu } = entity;
+                return [
+                  <View className="at-col at-col-4">{originTimu}</View>,
+                  <View className="at-col at-col-4">{roundNumber(timu)}</View>,
+                  <View
+                    className={classnames(
+                      "at-col at-col--4",
+                      `${ok ? "ok" : "error"}`
+                    )}
+                  >
+                    {answer}
+                  </View>,
+                ];
+              })}
+            </View>
           </View>
         </AtModalContent>
         <AtModalAction>

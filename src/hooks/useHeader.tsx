@@ -18,7 +18,7 @@ const useHeader = (props) => {
     onReset: onResetRight,
     right,
   } = useRight({ total });
-  const [currentTime, onResetTime, stop] = useTimer();
+  const [currentTime, onResetTime, stop, doTime] = useTimer();
   const [drawVisible, setDrawVisible] = useState(false);
   const canvasRef = useRef<CanvasDrawingRef>(null);
 
@@ -52,6 +52,7 @@ const useHeader = (props) => {
     done,
     time: currentTime,
     stopTime: stop,
+    doTime,
   }
 };
 
