@@ -14,9 +14,6 @@ const useKeyboard = (props: Pick<KeyboardProps, "onRestart" | "onOk">) => {
 
   const onDelete = () => {
     let val = value.slice(0, -1);
-    if (!val.length) {
-      val = defaultVal;
-    }
     setValue(val);
   };
 

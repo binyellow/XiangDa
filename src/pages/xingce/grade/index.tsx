@@ -4,40 +4,27 @@ import { getRandomInt } from "@/utils/math";
 import { CanvasDrawingRef } from "@/components/Canvas";
 import useKeyboard from "@/components/Keyboard/useKeyboard";
 import { onPrecision } from "@/utils/math";
-import useRight from "@/hooks/useRight";
 import {
-  AtIcon,
   AtModal,
   AtModalAction,
   AtModalContent,
   AtModalHeader,
   AtNoticebar,
-  AtTag,
 } from "taro-ui";
-import Canvas from "@/components/Canvas";
 import "./index.less";
-import { useTimer } from "@/hooks/useTime";
 import Taro from "@tarojs/taro";
-import Modal from "@/components/Modal";
+import useHeader from "@/hooks/useHeader";
 
 const Grade = () => {
   const params = Taro.getCurrentInstance()?.router?.params;
   const total = params?.number || 10;
-  console.log(total);
   const canvasRef = useRef<CanvasDrawingRef>(null);
   const [fenmu, setFenmu] = useState(getRandomInt(101, 1000));
   const [fenzi, setFenzi] = useState(getRandomInt(100, fenmu));
-  const {
-    done,
-    display,
-    onRight,
-    onError,
-    onReset: onResetRight,
-    right,
-  } = useRight({ total });
-  const [drawVisible, setDrawVisible] = useState(false);
-  const [currentTime, onResetTime] = useTimer();
+
   const [resultVisible, setResultVisible] = useState(false);
+  const { header, onResetTime, right, onResetRight, onError, onRight, done } =
+    useHeader({ total });
 
   useEffect(() => {
     if (done) {
@@ -82,26 +69,7 @@ const Grade = () => {
             <View>建议写到小数后2~3位</View>
             <View>允许误差范围：±2%</View>
           </AtNoticebar>
-          <View className="header">
-            <AtTag name="tag-1" type="primary" circle>
-              {display}
-            </AtTag>
-            <View>{currentTime}</View>
-            <View>
-              <AtIcon
-                onClick={() => setDrawVisible(true)}
-                value="edit"
-                color="#6686f7"
-              ></AtIcon>
-              {/* 画板 */}
-              <Modal
-                visible={drawVisible}
-                onClose={() => setDrawVisible(false)}
-              >
-                <Canvas ref={canvasRef} />
-              </Modal>
-            </View>
-          </View>
+          {header}
 
           <View className="cal-content">
             <View
