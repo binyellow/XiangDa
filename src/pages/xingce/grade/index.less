@@ -1,3 +1,8 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -22,6 +27,7 @@
 .at-curtain__container {
   height: 100%;
   width: 100%;
+  position: fixed;
 
   .at-curtain__body {
     height: 100%;
@@ -34,5 +40,13 @@
       bottom: 60rpx;
       right: 30rpx;
     }
+
+    .at-curtain__btn-close {
+      z-index: 1081;
+    }
   }
+}
+
+.at-curtain--closed {
+  display: none;
 }

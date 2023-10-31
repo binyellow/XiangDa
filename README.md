@@ -1,0 +1,4 @@
+- [x] canvas还是导致下拉
+  - pageconfig中设置禁止滚动 
+- [ ] 关闭按钮无效
+  - fixed元素点击无效

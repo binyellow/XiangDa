@@ -18,7 +18,10 @@ export interface CanvasDrawingRef {
   clearCanvas: () => void;
 }
 
-function CanvasDrawing(props: CanvasDrawingProps, ref: RefObject<CanvasDrawingRef>) {
+function CanvasDrawing(
+  props: CanvasDrawingProps,
+  ref: RefObject<CanvasDrawingRef>
+) {
   const [ctx, setCtx] = useState<any>();
   const lastPointRef = useRef({ x: 0, y: 0 });
   const canvasRef = useRef();

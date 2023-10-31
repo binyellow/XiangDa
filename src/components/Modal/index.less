@@ -1,0 +1,25 @@
+.modal {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 1080;
+  align-items: center;
+
+  .content {
+    flex: auto;
+    width: 100%;
+    border: 4rpx solid #000;
+    box-sizing: border-box;
+  }
+
+  .at-icon.at-icon-close-circle {
+    margin-top: 24rpx;
+    margin-bottom: 36rpx;
+  }
+}
