@@ -39,7 +39,7 @@ const Item = ({ label, value }) => {
 
 const ErrorResult = forwardRef((props, ref: RefObject<ErrorResultRefProps>) => {
   const [visible, setVisible] = useState(false);
-  const [errorInfo, setErrorInfo] = useState<HistoryProps>({});
+  const [errorInfo, setErrorInfo] = useState<HistoryProps>();
 
   useImperativeHandle(ref, () => {
     return {
@@ -59,7 +59,7 @@ const ErrorResult = forwardRef((props, ref: RefObject<ErrorResultRefProps>) => {
       <AtModalContent>
         <Item label="正确值" value={errorInfo?.timu} />
         <Item label="你的值" value={errorInfo?.answer} />
-        <Item label="误差率" value={`${errorInfo?.precision} %`} />
+        <Item label="误差率" value={`${errorInfo?.error} %`} />
       </AtModalContent>
       <AtModalAction>
         <Button onClick={() => setVisible(false)}>确定</Button>

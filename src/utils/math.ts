@@ -2,13 +2,13 @@ export function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function calculateError(givenValue, inputValue) {
+function calculateError(givenValue, inputValue): number {
   const errorPercentage =
     (Math.abs(givenValue - inputValue) / givenValue) * 100;
   return errorPercentage;
 }
 
-export function onPrecision(givenValue, inputValue, precision = 2) {
+export function onPrecision(givenValue, inputValue, precision = 2): [boolean, number] {
   const error = calculateError(givenValue, inputValue);
   const isErrorWithin2Percent = error <= precision;
 

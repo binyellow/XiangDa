@@ -56,6 +56,9 @@ dependencies:
   '@tarojs/taro':
     specifier: 3.6.17
     version: registry.npmmirror.com/@tarojs/taro@3.6.17(@types/react@18.2.30)(postcss@8.4.31)
+  classnames:
+    specifier: ^2.3.2
+    version: registry.npmmirror.com/classnames@2.3.2
   react:
     specifier: ^18.0.0
     version: registry.npmmirror.com/react@18.2.0
@@ -15378,7 +15381,7 @@ packages:
     dependencies:
       object-assign: registry.npmmirror.com/object-assign@4.1.1
       react: registry.npmmirror.com/react@18.2.0
-      react-is: registry.npmmirror.com/react-is@17.0.2
+      react-is: registry.npmmirror.com/react-is@18.2.0
     dev: false
 
   registry.npmmirror.com/react@18.2.0:

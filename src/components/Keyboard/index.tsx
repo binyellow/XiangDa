@@ -16,7 +16,7 @@ export const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, ".", 0];
 const index = (props: KeyboardProps) => {
   const { onRestart, onClear, onDelete, onInput, onOk, style } = props;
   return (
-    <View className="at-row at-row--wrap" style={style}>
+    <View className="at-row at-row--wrap keyboard" style={style}>
       <AtButton className="at-col at-col-4" onClick={onRestart}>
         重开
       </AtButton>
