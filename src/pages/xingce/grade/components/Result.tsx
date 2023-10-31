@@ -14,7 +14,13 @@ import React, {
   useImperativeHandle,
   useState,
 } from "react";
-import { AtModal, AtModalAction, AtModalContent, AtModalHeader } from "taro-ui";
+import {
+  AtModal,
+  AtModalAction,
+  AtModalContent,
+  AtModalHeader,
+  AtProgress,
+} from "taro-ui";
 import classnames from "classnames";
 import "./Result.less";
 import { roundNumber } from "@/utils/math";
@@ -45,6 +51,8 @@ const Result = forwardRef(
       };
     });
 
+    const rightNumber = history?.map((v) => v.ok)?.length;
+
     return (
       <AtModal isOpened={visible}>
         <AtModalHeader>恭喜你做完了</AtModalHeader>
@@ -62,7 +70,7 @@ const Result = forwardRef(
                   <View className="at-col at-col-4">{roundNumber(timu)}</View>,
                   <View
                     className={classnames(
-                      "at-col at-col--4",
+                      "at-col at-col-4",
                       `${ok ? "ok" : "error"}`
                     )}
                   >
@@ -70,6 +78,13 @@ const Result = forwardRef(
                   </View>,
                 ];
               })}
+            </View>
+            <View>
+              正确率:{" "}
+              <AtProgress
+                percent={rightNumber / history?.length}
+                status="success"
+              />
             </View>
           </View>
         </AtModalContent>
