@@ -1,3 +1,6 @@
+- [ ] 主包超过1.5M
+- [ ] 真机调试-白屏
+- [ ] useHistory
 - [x] canvas还是导致下拉
   - pageconfig中设置禁止滚动 
 - [ ] 关闭按钮无效
