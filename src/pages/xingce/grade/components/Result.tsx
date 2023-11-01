@@ -51,7 +51,7 @@ const Result = forwardRef(
       };
     });
 
-    const rightNumber = history?.map((v) => v.ok)?.length;
+    const rightNumber = history?.filter((v) => v.ok)?.length;
 
     return (
       <AtModal isOpened={visible}>
