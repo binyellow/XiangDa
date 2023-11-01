@@ -18,28 +18,30 @@ const Index = () => {
   useEffect(() => {
     Taro.setTabBarBadge({
       index: 0,
-      text: "6"
+      text: "6",
     });
     queryList();
   }, []);
 
   const queryList = () => {
-    Taro.request({
-      method: "GET",
-      url: "https://momoyu.cc/api/hot/list?type=0"
-    }).then(res => {
-      setDataSource(res?.data?.data);
-    });
+    setTimeout(() => {
+      Taro.request({
+        method: "GET",
+        url: "https://momoyu.cc/api/hot/list?type=0",
+      }).then((res) => {
+        setDataSource(res?.data?.data);
+      });
+    }, 1000 * 60);
   };
 
   return (
-    <View className='dashboard'>
+    <View className="dashboard">
       <CoverImage
         src={titleBg}
-        className='title-bg'
-        style='margin-bottom: 30rpx'
+        className="title-bg"
+        style="margin-bottom: 30rpx"
       />
-      <View style='font-size:18px;text-align:center;height:100px;'>
+      <View style="font-size:18px;text-align:center;height:100px;">
         <Card dataSource={dataSource} />
       </View>
     </View>
