@@ -8,22 +8,33 @@ interface ModalProps {
   visible: boolean;
   children: React.ReactNode;
   onClose: () => void;
+  onReload: () => void;
 }
 const index = (props: ModalProps) => {
-  const { visible, children, onClose } = props;
+  const { visible, children, onClose, onReload } = props;
 
   if (!visible) return null;
   return (
     <View className="modal" catchMove>
       <View className="content">{children}</View>
-      <AtIcon
-        value="close-circle"
-        size="30"
-        color="#fff"
-        onClick={() => {
-          onClose();
-        }}
-      ></AtIcon>
+      <View className="operation">
+        <AtIcon
+          value="reload"
+          size="30"
+          color="#fff"
+          onClick={() => {
+            onReload();
+          }}
+        ></AtIcon>
+        <AtIcon
+          value="close-circle"
+          size="30"
+          color="#fff"
+          onClick={() => {
+            onClose();
+          }}
+        ></AtIcon>
+      </View>
     </View>
   );
 };

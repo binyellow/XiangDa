@@ -24,6 +24,7 @@ import {
 import classnames from "classnames";
 import "./Result.less";
 import { percent, roundNumber } from "@/utils/math";
+import DrawingBoard from "@/components/Canvas/DrawingBoard";
 
 interface ResultProps {
   onSure: () => void;
@@ -58,7 +59,10 @@ const Result = forwardRef(
         <AtModalHeader>恭喜你做完了</AtModalHeader>
         <AtModalContent>
           <View className="content">
-            <View>耗时: {time}</View>
+            <View className="title">
+              <View>耗时: {time}</View>
+              <DrawingBoard />
+            </View>
             <View className="at-row at-row--wrap result">
               <View className="at-col at-col-4">题目</View>
               <View className="at-col at-col-4">答案</View>

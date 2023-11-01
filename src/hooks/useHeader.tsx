@@ -1,12 +1,11 @@
 import { View } from "@tarojs/components";
-import React, { useRef, useState } from "react";
-import { AtIcon, AtTag } from "taro-ui";
-import Modal from "@/components/Modal";
+import { useRef } from "react";
+import { AtTag } from "taro-ui";
 import useRight from "@/hooks/useRight";
 import { useTimer } from "@/hooks/useTime";
-import Canvas from "@/components/Canvas";
 import { CanvasDrawingRef } from "@/components/Canvas";
-import './header.less';
+import "./header.less";
+import DrawingBoard from "@/components/Canvas/DrawingBoard";
 
 const useHeader = (props) => {
   const { total } = props;
@@ -19,8 +18,8 @@ const useHeader = (props) => {
     right,
   } = useRight({ total });
   const [currentTime, onResetTime, stop, doTime] = useTimer();
-  const [drawVisible, setDrawVisible] = useState(false);
   const canvasRef = useRef<CanvasDrawingRef>(null);
+
 
   const header = (
     <View className="header">
@@ -28,17 +27,7 @@ const useHeader = (props) => {
         {display}
       </AtTag>
       <View>{currentTime}</View>
-      <View>
-        <AtIcon
-          onClick={() => setDrawVisible(true)}
-          value="edit"
-          color="#6686f7"
-        ></AtIcon>
-        {/* 画板 */}
-        <Modal visible={drawVisible} onClose={() => setDrawVisible(false)}>
-          <Canvas ref={canvasRef} />
-        </Modal>
-      </View>
+      <DrawingBoard />
     </View>
   );
 
@@ -53,7 +42,7 @@ const useHeader = (props) => {
     time: currentTime,
     stopTime: stop,
     doTime,
-  }
+  };
 };
 
 export default useHeader;

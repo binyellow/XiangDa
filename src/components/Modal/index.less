@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   top: 0;
@@ -17,10 +17,18 @@
     box-sizing: border-box;
   }
 
-  .at-icon.at-icon-close-circle {
-    margin-top: 24rpx;
-    margin-bottom: 36rpx;
-    text-align: right;
-    padding: 0 60rpx;
+  .at-icon {
+    &.at-icon-close-circle,
+    &.at-icon-reload {
+      margin-top: 24rpx;
+      margin-bottom: 36rpx;
+      text-align: right;
+      padding: 0 60rpx;
+    }
+  }
+
+  .operation {
+    display: flex;
+    justify-content: space-around;
   }
 }
