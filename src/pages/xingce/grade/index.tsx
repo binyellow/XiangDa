@@ -14,7 +14,6 @@ import { AtNoticebar } from "taro-ui";
 import "./index.less";
 import Taro from "@tarojs/taro";
 import useHeader from "@/hooks/useHeader";
-import ErrorResult, { ErrorResultRefProps } from "./components/ErrorResult";
 import useHistory from "@/hooks/useHistory";
 import Result, { ResultRef } from "./components/Result";
 
@@ -24,7 +23,6 @@ const Grade = () => {
   const canvasRef = useRef<CanvasDrawingRef>(null);
   const [fenmu, setFenmu] = useState(getRandomInt(101, 1000));
   const [fenzi, setFenzi] = useState(getRandomInt(100, fenmu));
-  const errorResultRef = useRef<ErrorResultRefProps>(null);
   const resultRef = useRef<ResultRef>(null);
 
   const {
@@ -52,22 +50,24 @@ const Grade = () => {
     setFenzi(getRandomInt(100, newFenmu));
   };
 
-  const handleError = (error) => {
-    onError();
-    errorResultRef?.current?.show({
-      timu: fenzi / fenmu,
-      answer: +keyboardVal,
-      error,
-    });
+  const onSure = () => {
+    onRestart();
+    onResetRight();
+    onResetHistory();
+    doTime();
   };
 
-  const { keyboard, keyboardVal, history, onResetHistory } = useHistory({
+  const { keyboard, keyboardVal, onResetHistory } = useHistory({
     fenzi,
     fenmu,
     onRight,
-    onError: handleError,
+    onError,
+    time,
     onResetTime,
     onResetTimu,
+    done,
+    stopTime,
+    onSure,
   });
 
   function onRestart() {
@@ -76,13 +76,6 @@ const Grade = () => {
     setFenzi(getRandomInt(100, newFenmu));
     onResetTime();
   }
-
-  const onSure = () => {
-    onRestart();
-    onResetRight();
-    onResetHistory();
-    doTime();
-  };
 
   return (
     <View>
@@ -109,9 +102,6 @@ const Grade = () => {
         </View>
         {keyboard}
       </View>
-
-      <Result ref={resultRef} onSure={onSure} history={history} time={time} />
-      <ErrorResult ref={errorResultRef} />
     </View>
   );
 };

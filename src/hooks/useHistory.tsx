@@ -8,7 +8,12 @@
 
 import useKeyboard from "@/components/Keyboard/useKeyboard";
 import { onPrecision } from "@/utils/math";
-import { useState } from "react";
+import { View } from "@tarojs/components";
+import { useEffect, useRef, useState } from "react";
+import ErrorResult, {
+  ErrorResultRefProps,
+} from "@/pages/xingce/grade/components/ErrorResult";
+import Result, { ResultRef } from "@/pages/xingce/grade/components/Result";
 
 export interface HistoryProps {
   originTimu?: string; // 原题  "1/2"
@@ -24,9 +29,22 @@ const useHistory = ({
   onRight,
   onError,
   onResetTime,
+  stopTime,
   onResetTimu,
+  done,
+  time,
+  onSure,
 }) => {
   const [history, setHistory] = useState<HistoryProps[]>([]);
+  const errorResultRef = useRef<ErrorResultRefProps>(null);
+  const resultRef = useRef<ResultRef>(null);
+
+  useEffect(() => {
+    if (done) {
+      resultRef.current?.show();
+      stopTime();
+    }
+  }, [done]);
 
   const onOk = () => {
     const [ok, error] = onPrecision(fenzi / fenmu, +keyboardVal);
@@ -44,6 +62,11 @@ const useHistory = ({
       onRight();
     } else {
       onError(error);
+      errorResultRef?.current?.show({
+        timu: fenzi / fenmu,
+        answer: +keyboardVal,
+        error,
+      });
     }
     onReset();
     onResetTimu();
@@ -59,10 +82,17 @@ const useHistory = ({
     onResetTime();
   }
 
+  const memoKeyboardResult = (
+    <>
+      {keyboard}
+      <ErrorResult ref={errorResultRef} />
+      <Result ref={resultRef} onSure={onSure} history={history} time={time} />
+    </>
+  );
+
   return {
-    history,
-    keyboard,
     keyboardVal,
+    keyboard: memoKeyboardResult,
     onResetHistory: () => setHistory([]),
   };
 };

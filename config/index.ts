@@ -20,6 +20,7 @@ const config = {
   framework: "react",
   alias: {
     '@/components': resolve(__dirname, '..', 'src/components'),
+    '@/pages': resolve(__dirname, '..', 'src/pages'),
     '@/utils': resolve(__dirname, '..', 'src/utils'),
     '@/package': resolve(__dirname, '..', 'package.json'),
     '@/assets': resolve(__dirname, '..', 'src/assets'),

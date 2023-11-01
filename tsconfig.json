@@ -17,6 +17,7 @@
     "rootDir": ".",
     "jsx": "react-jsx",
     "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
     "allowJs": true,
     "resolveJsonModule": true,
     "typeRoots": [
@@ -27,6 +28,7 @@
       "@/utils/*": ["src/utils/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/components/*": ["src/components/*"],
+      "@/pages/*": ["src/pages/*"],
     },
   },
   "include": ["./src", "./types"],
