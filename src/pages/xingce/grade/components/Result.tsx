@@ -23,7 +23,7 @@ import {
 } from "taro-ui";
 import classnames from "classnames";
 import "./Result.less";
-import { roundNumber } from "@/utils/math";
+import { percent, roundNumber } from "@/utils/math";
 
 interface ResultProps {
   onSure: () => void;
@@ -80,9 +80,9 @@ const Result = forwardRef(
               })}
             </View>
             <View>
-              正确率:{" "}
+              正确率: {rightNumber}/{history?.length}
               <AtProgress
-                percent={rightNumber / history?.length}
+                percent={percent(rightNumber / history?.length)}
                 status="success"
               />
             </View>

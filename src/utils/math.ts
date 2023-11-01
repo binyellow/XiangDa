@@ -19,3 +19,8 @@ export function roundNumber(number, precision = 4) {
   const factor = Math.pow(10, precision);
   return Math.round(number * factor) / factor;
 }
+
+// 将小数化percent
+export function percent(number) {
+  return Math.floor(number * 100);
+}
