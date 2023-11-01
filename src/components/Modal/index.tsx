@@ -1,7 +1,7 @@
 import { View } from "@tarojs/components";
 import React from "react";
 import "./index.less";
-import { AtIcon, AtMessage } from "taro-ui";
+import { AtCurtain, AtIcon, AtMessage } from "taro-ui";
 import Taro from "@tarojs/taro";
 
 interface ModalProps {
@@ -15,7 +15,7 @@ const index = (props: ModalProps) => {
 
   if (!visible) return null;
   return (
-    <View className="modal" catchMove>
+    <AtCurtain className="modal" onClose={onClose} isOpened={visible}>
       <View className="content">{children}</View>
       <View className="operation">
         <AtIcon
@@ -35,7 +35,7 @@ const index = (props: ModalProps) => {
           }}
         ></AtIcon>
       </View>
-    </View>
+    </AtCurtain>
   );
 };
 

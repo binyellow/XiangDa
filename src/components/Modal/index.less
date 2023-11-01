@@ -1,4 +1,8 @@
 .modal {
+  .at-curtain__btn-close.at-curtain__btn-close--bottom {
+    bottom: 60rpx;
+  }
+
   position: fixed;
   height: 100%;
   width: 100%;
@@ -31,4 +35,31 @@
     display: flex;
     justify-content: space-around;
   }
+}
+
+.at-curtain__container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  .at-curtain__body {
+    height: 100%;
+
+    & > view:first-child {
+      height: 90% !important;
+    }
+
+    .at-curtain__btn-close--bottom-right {
+      bottom: 60rpx;
+      right: 30rpx;
+    }
+
+    .at-curtain__btn-close {
+      z-index: 1081;
+    }
+  }
+}
+
+.at-curtain__btn-close {
+  display: none;
 }
