@@ -42,7 +42,20 @@ const Index = () => {
         style="margin-bottom: 30rpx"
       />
       <View style="font-size:18px;text-align:center;height:100px;">
-        <Card dataSource={dataSource} />
+        {dataSource?.length ? (
+          <Card dataSource={dataSource} />
+        ) : (
+          <View
+            style={{
+              height: "700rpx",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            xiangdaer
+          </View>
+        )}
       </View>
     </View>
   );
