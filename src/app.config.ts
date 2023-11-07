@@ -4,6 +4,7 @@ export default {
     "pages/found/index",
     "pages/mine/index",
     "pages/xingce/grade/index",
+    "pages/xingce/grade-surpass/index",
   ],
   tabBar: {
     list: [

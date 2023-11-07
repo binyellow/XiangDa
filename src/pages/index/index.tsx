@@ -31,7 +31,7 @@ const Index = () => {
       }).then((res) => {
         setDataSource(res?.data?.data);
       });
-    }, 1000 * 60);
+    }, 1000 * 5);
   };
 
   return (
