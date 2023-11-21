@@ -5,6 +5,7 @@ import Taro from "@tarojs/taro";
 import "./index.less";
 import { defaultOpenMap, xingCeTypeEnum } from "./constants";
 import { FoundContext } from "./Context";
+import { isWeapp } from "@/utils/env";
 
 const range = ["10", "5", "15", "20"];
 const Index = () => {
@@ -21,8 +22,10 @@ const Index = () => {
   >();
 
   useEffect(() => {
-    setBadge();
-    getSystemInfoSync();
+    if (isWeapp()) {
+      setBadge();
+      getSystemInfoSync();
+    }
   }, []);
 
   // 设置首页的徽标数

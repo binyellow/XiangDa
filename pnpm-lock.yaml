@@ -62,6 +62,9 @@ dependencies:
   react:
     specifier: ^18.0.0
     version: registry.npmmirror.com/react@18.2.0
+  react-canvas-draw:
+    specifier: ^1.2.1
+    version: registry.npmmirror.com/react-canvas-draw@1.2.1(react@18.2.0)
   react-dom:
     specifier: ^18.0.0
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
@@ -5895,6 +5898,12 @@ packages:
     version: 0.12.0
     dev: true
 
+  registry.npmmirror.com/catenary-curve@1.0.1:
+    resolution: {integrity: sha512-vSHQtYFjItV4wxUH5OkicA3Kmln6thBBWlJLiw2f4apfvkKw4BVe8bTbG6lnbJe60CIr8PyHzjSX27blSJ07Ww==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/catenary-curve/-/catenary-curve-1.0.1.tgz}
+    name: catenary-curve
+    version: 1.0.1
+    dev: false
+
   registry.npmmirror.com/caw@2.0.1:
     resolution: {integrity: sha512-Cg8/ZSBEa8ZVY9HspcGUYaK63d/bN7rqS3CYCzEGUxuYv6UlmcjzDUz2fCFFHyTvUW5Pk0I+3hkA3iXlIj6guA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/caw/-/caw-2.0.1.tgz}
     name: caw
@@ -11719,6 +11728,12 @@ packages:
       package-json: registry.npmmirror.com/package-json@6.5.0
     dev: true
 
+  registry.npmmirror.com/lazy-brush@1.0.1:
+    resolution: {integrity: sha512-xT/iSClTVi7vLoF8dCWTBhCuOWqsLXCMPa6ucVmVAk6hyNCM5JeS1NLhXqIrJktUg+caEYKlqSOUU4u3cpXzKg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lazy-brush/-/lazy-brush-1.0.1.tgz}
+    name: lazy-brush
+    version: 1.0.1
+    dev: false
+
   registry.npmmirror.com/less-loader@10.2.0(less@4.2.0)(webpack@5.89.0):
     resolution: {integrity: sha512-AV5KHWvCezW27GT90WATaDnfXBv99llDbtaj4bshq6DvAihMdNjaPDcUMa6EXKLRF+P2opFenJp89BXg91XLYg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/less-loader/-/less-loader-10.2.0.tgz}
     id: registry.npmmirror.com/less-loader/10.2.0
@@ -15226,6 +15241,21 @@ packages:
       strip-json-comments: registry.npmmirror.com/strip-json-comments@2.0.1
     dev: true
 
+  registry.npmmirror.com/react-canvas-draw@1.2.1(react@18.2.0):
+    resolution: {integrity: sha512-mCHE+Q91a26gUhyraHONedmbCI7dF/4BKdOxba7s4538QNfFWv/NfzLXWZrmjAQ4tO1vTvO+axX5YGIFjGc6uw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-canvas-draw/-/react-canvas-draw-1.2.1.tgz}
+    id: registry.npmmirror.com/react-canvas-draw/1.2.1
+    name: react-canvas-draw
+    version: 1.2.1
+    peerDependencies:
+      react: 16.x || 17.x
+    dependencies:
+      catenary-curve: registry.npmmirror.com/catenary-curve@1.0.1
+      lazy-brush: registry.npmmirror.com/lazy-brush@1.0.1
+      prop-types: registry.npmmirror.com/prop-types@15.8.1
+      react: registry.npmmirror.com/react@18.2.0
+      resize-observer-polyfill: registry.npmmirror.com/resize-observer-polyfill@1.5.1
+    dev: false
+
   registry.npmmirror.com/react-devtools-core@4.28.4:
     resolution: {integrity: sha512-IUZKLv3CimeM07G3vX4H4loxVpByrzq3HvfTX7v9migalwvLs9ZY5D3S3pKR33U+GguYfBBdMMZyToFhsSE/iQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-devtools-core/-/react-devtools-core-4.28.4.tgz}
     name: react-devtools-core
@@ -15803,6 +15833,12 @@ packages:
     name: requires-port
     version: 1.0.0
     dev: true
+
+  registry.npmmirror.com/resize-observer-polyfill@1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz}
+    name: resize-observer-polyfill
+    version: 1.5.1
+    dev: false
 
   registry.npmmirror.com/resolve-dir@1.0.1:
     resolution: {integrity: sha512-R7uiTjECzvOsWSfdM0QKFNBVFcK27aHOUwdvK53BcW8zqnGdYp0Fbj82cy54+2A4P2tFM22J5kRfe1R+lM/1yg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/resolve-dir/-/resolve-dir-1.0.1.tgz}

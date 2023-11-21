@@ -11,16 +11,19 @@ import "taro-ui/dist/style/components/icon.scss";
 import "./index.less";
 import Card from "./components/Card";
 import { NewsRes } from "./type";
+import { isWeapp } from "@/utils/env";
 
 const Index = () => {
   const [dataSource, setDataSource] = useState<NewsRes["data"]>([]);
 
   useEffect(() => {
-    Taro.setTabBarBadge({
-      index: 0,
-      text: "6",
-    });
-    queryList();
+    if (isWeapp()) {
+      Taro.setTabBarBadge({
+        index: 0,
+        text: "6",
+      });
+      queryList();
+    }
   }, []);
 
   const queryList = () => {

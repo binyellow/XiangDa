@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Keyboard, { KeyboardProps } from "./index";
+import { pxTransform } from "@tarojs/taro";
 
 const defaultVal = "0.";
 const useKeyboard = (props: Pick<KeyboardProps, "onRestart" | "onOk">) => {
@@ -23,7 +24,7 @@ const useKeyboard = (props: Pick<KeyboardProps, "onRestart" | "onOk">) => {
       onClear={() => setValue(defaultVal)}
       onDelete={onDelete}
       onInput={onInput}
-      style={{position: 'absolute', bottom: '50rpx'}}
+      style={{ position: "absolute", bottom: pxTransform(50) }}
     />
   );
 

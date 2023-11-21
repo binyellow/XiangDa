@@ -8,6 +8,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { isH5 } from "@/utils/env";
+import CanvasDraw from "react-canvas-draw";
 
 interface CanvasDrawingProps {
   width?: string;
@@ -83,6 +85,20 @@ function CanvasDrawing(
       ctx.draw(true);
     }
   };
+
+  if (isH5()) {
+    return (
+      <CanvasDraw
+        // 笔宽
+        brushRadius={1}
+        ref={canvasRef}
+        style={{ width: "100%", height: "100%", background: "none" }}
+        hideGrid
+        // 延迟笔画
+        lazyRadius={0}
+      />
+    );
+  }
 
   return (
     <Canvas
