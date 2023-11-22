@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { isH5 } from "@/utils/env";
+import { isH5, isWeapp } from "@/utils/env";
 import CanvasDraw from "react-canvas-draw";
 
 interface CanvasDrawingProps {
@@ -26,7 +26,7 @@ function CanvasDrawing(
 ) {
   const [ctx, setCtx] = useState<any>();
   const lastPointRef = useRef({ x: 0, y: 0 });
-  const canvasRef = useRef();
+  const canvasRef = useRef<any>();
 
   useEffect(() => {
     const canvasContext = Taro.createCanvasContext("myCanvas");
@@ -56,9 +56,13 @@ function CanvasDrawing(
   };
 
   const clearCanvas = async () => {
-    const [width, height] = await getCanvasSize();
-    ctx.clearRect(0, 0, width, height);
-    ctx.draw();
+    if (isWeapp()) {
+      const [width, height] = await getCanvasSize();
+      ctx.clearRect(0, 0, width, height);
+      ctx.draw();
+    } else if (isH5()) {
+      canvasRef?.current?.clear();
+    }
   };
 
   const onTouchStart = (e) => {
@@ -91,11 +95,13 @@ function CanvasDrawing(
       <CanvasDraw
         // 笔宽
         brushRadius={1}
+        brushColor={"black"}
         ref={canvasRef}
         style={{ width: "100%", height: "100%", background: "none" }}
         hideGrid
         // 延迟笔画
         lazyRadius={0}
+        catenaryColor="transparent"
       />
     );
   }

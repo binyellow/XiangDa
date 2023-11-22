@@ -55,7 +55,7 @@ const Result = forwardRef(
     const rightNumber = history?.filter((v) => v.ok)?.length;
 
     return (
-      <AtModal isOpened={visible}>
+      <AtModal isOpened={visible} className="modal">
         <AtModalHeader>恭喜你做完了</AtModalHeader>
         <AtModalContent>
           <View className="content">
